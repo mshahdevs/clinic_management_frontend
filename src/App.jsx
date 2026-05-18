@@ -1,10 +1,38 @@
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ProtectedRoute from './components/ProtectedRoute';
+import PatientDashboard from './pages/PatientDashboard';
+import DoctorDashboard from './pages/DoctorDashboard';
+
 function App() {
   return (
-    <div className='min-h-screen bg-gray-100 flex items-center justify-center'>
-      <h1 className='text-4xl font-bold text-blue-600'>
-        React + Tailwind CSS Setup Done
-      </h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<Navigate to='/login' replace />} />
+
+      <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
+
+      <Route
+        path='/patient/dashboard'
+        element={
+          <ProtectedRoute allowedRoles={['patient']}>
+            <PatientDashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path='/doctor/dashboard'
+        element={
+          <ProtectedRoute allowedRoles={['doctor']}>
+            <DoctorDashboard />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route path='*' element={<h1>404 Page Not Found</h1>} />
+    </Routes>
   );
 }
 
