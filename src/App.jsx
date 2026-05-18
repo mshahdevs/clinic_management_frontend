@@ -4,6 +4,7 @@ import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import PatientDashboard from './pages/PatientDashboard';
 import DoctorDashboard from './pages/DoctorDashboard';
+import DoctorsList from './pages/DoctorsList';
 
 function App() {
   return (
