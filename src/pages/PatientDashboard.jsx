@@ -10,7 +10,7 @@ const PatientDashboard = () => {
 
   const fetchDashboard = async () => {
     try {
-      const res = await API.get('/patients/dashboard');
+      const res = await API.get('/patient/dashboard');
       setDashboard(res.data.data);
     } catch (error) {
       console.log(error.response?.data?.message || error.message);
